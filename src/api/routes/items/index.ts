@@ -16,11 +16,12 @@ const getItemsByQuery: RequestHandler = async (req: Request, res: Response) => {
             message: 'Search items successfully',
             res
         })
-    } catch {
+    } catch (error) {
         BadRequestResponse({
             res,
             message: 'Error fetching items'
         })
+        console.log(error)
     }
 }
 
@@ -33,11 +34,12 @@ const getItemsById: RequestHandler = async (req: Request, res: Response) => {
             message: 'Search items successfully',
             res
         })
-    } catch {
+    } catch (error) {
         BadRequestResponse({
             res,
-            message: 'Error fetching items'
+            message: 'Error fetching detail'
         })
+        console.log(error)
     }
 }
 

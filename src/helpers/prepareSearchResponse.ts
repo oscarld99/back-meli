@@ -4,14 +4,16 @@ import { DetailResponse } from "interfaces/responses/detailResponse.interface";
 import { SearchResponse } from "interfaces/responses/searchResponse.interface";
 
 export const prepareSearchResponse = (meliResponse: SearchMeliResponse): SearchResponse => {
+    const arrCategories =
+        meliResponse?.filters?.find((filter) => filter.id === 'category')?.values
     return {
         author: {
             name: 'Oscar',
             lastname: 'Lora'
         },
-        categories: [],
+        categories: (arrCategories) ? arrCategories.map((category) => category.name) : [],
         items: meliResponse?.results?.map((item) => {
-            const priceString = `${item.installments.amount}`.split('.')
+            const priceString = `${item.price}`.split('.')
             return {
                 id: item.id,
                 condition: item.condition,
