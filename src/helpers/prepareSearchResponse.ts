@@ -16,6 +16,7 @@ export const prepareSearchResponse = (meliResponse: SearchMeliResponse): SearchR
             const priceString = `${item.price}`.split('.')
             return {
                 id: item.id,
+                city: item.address.city_name,
                 condition: item.condition,
                 free_shipping: item.shipping.free_shipping,
                 picture: item.thumbnail,
